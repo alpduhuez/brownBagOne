@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Scala - What is it good for?</title>
+
+    <meta name="description" content="A tour of Scala By The Bay sessions">
+    <meta name="author" content="Brandon Lonac">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="shortcut icon" href="http://www.scalabythebay.org/images/favicon.ico">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <!--<link rel="stylesheet" href="css/theme/night.css" id="theme">-->
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if (window.location.search.match(
+                /print-pdf/gi))
+        {
+            var link = document.createElement(
+                    'link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName(
+                    'head')[0].appendChild(
+                    link);
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--Custom styles-->
+    <style type="text/css">
+        .reveal .slides .clean_img {
+            border: none;
+            background: none;
+        }
+
+        div.multi {
+            column-count: 2 column-gap : 10 px;
+            column-rule: 1px solid black;
+        }
+
+        div#multicolumn1 {
+            float: left;
+            -moz-column-count: 2;
+            -moz-column-gap: 50%;
+            -webkit-column-count: 2;
+            -webkit-column-gap: 50%;
+            column-count: 2;
+            column-gap: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section>
+    <h2>Say 'hello' to my little friend!</h2>
+
+    <h3>Scala</h3>
+
+    <p>
+        <img class="clean_img" width="100" height="167" src="images/smooth-spiral.png">
+    </p>
+    <h4>
+        <small>Tour Guide: <a target="_blank" href="http://grooveshark.com/#!/s/Ghostwriter/19uu?src=5">Brandon
+            Lonac</a></small>
+    </h4>
+</section>
+
+<!-- Example of nested vertical slides -->
+<section>
+    <section>
+        <h2>Scala By The Bay</h2>
+
+        <div style="display: inline-block; text-align: left">
+            <div class="fragment">
+                <li>20+ sessions over 2 days</li>
+            </div>
+            <div class="fragment">
+                <li>100+ engineers</li>
+            </div>
+            <div class="fragment">
+                <li>Notable engineers from community</li>
+            </div>
+            <div class="fragment">
+
+                <div style="display: inline-block;vertical-align: top; margin-top: 0px;">
+                    <li style="text-align: left;">Notable companies:
+                        <div style="display: inline-block; margin-left: 40px; width: 100px;">
+                            <ul>
+                                <li>Twitter</li>
+                                <li>LinkedIn</li>
+                                <li>Paypal</li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </div>
+            </div>
+        </div>
+
+        <div class="fragment" style="margin-top: 30px">
+            <p style="font-style: italic;">
+                So <a href="#" class="navigate-down">why</a> did I go to a Scala conference?
+            </p>
+        </div>
+        <aside class="notes">
+<li>            - Conference in early August</li>
+<li>            - Twitter had a strong presence there, one of the principle engineers</li>
+        </aside>
+    </section>
+    <section>
+        <h2>It was in San Francisco!</h2>
+        <a href="#" class="image navigate-down">
+            <img class="clean_img" height="300" width="450" src="images/bridge.png" />
+        </a>
+
+        <ul>
+            <div class="fragment">
+                <li>Home of Twitter, LinkedIn, and PayPal</li>
+            </div>
+            <div class="fragment">
+                <li>TypeSafe headquarters and many other start-ups using Scala</li>
+            </div>
+        </ul>
+        <aside class="notes">
+            <li>It was mentioned that Twitter has the largest scala codebase</li>
+            <li>They are very active in the community, open sourced many tools and frameworks, including Finagle</li>
+            <li>LinkedIn uses Play, Akka for services and data mining</li>
+        </aside>
+    </section>
+    <section>
+        <h2>Does it really interoperate with Java?</h2>
+
+        <ul>
+            <div class="fragment" style="text-align: left">
+                <li>Can Java use a Scala class?</li>
+            </div>
+            <div class="fragment" style="text-align: left">
+                <li>Can Scala use a Java class?</li>
+            </div>
+            <div class="fragment" style="text-align: left">
+                <li>Are there any funny type issues?</li>
+            </div>
+        </ul>
+    </section>
+    <section>
+        <h2>Is Scala more productive than Java?</h2>
+
+        <ul>
+            <div class="fragment" style="text-align: left">
+                <li>Can you get past the syntax?</li>
+            </div>
+            <div class="fragment" style="text-align: left">
+                <li>Is functional programming hard?</li>
+            </div>
+            <div class="fragment" style="text-align: left">
+                <li>Is it just like Groovy?</li>
+            </div>
+        </ul>
+    </section>
+    <section style="width: 100%;">
+        <h3>&lt;airquotes&gt;<br />Scala is better at concurrency than Java<br />&lt;/airquotes&gt;</h3>
+
+        <ul>
+            <div class="fragment" style="text-align: left">
+                <li>What makes the language so fast?</li>
+            </div>
+            <div class="fragment" style="text-align: left">
+                <li>Why can it supposedly scale better than Java?</li>
+            </div>
+            <div class="fragment" style="text-align: left">
+                <li>What the heck is Spray, Play, Finagle, and Akka?</li>
+            </div>
+        </ul>
+    </section>
+    <section>
+        <h2>How is it really pronounced?</h2>
+
+        <div class="fragment">
+            Scala = skah - lah
+        </div>
+    </section>
+</section>
+
+<section>
+    <h2>So, what is Scala at a high level?</h2>
+
+    <div class="fragment">
+
+        <blockquote>
+            <p>            &ldquo;Scala is an object-functional programming and scripting language for general software
+                applications.&rdquo;
+            </p>
+
+            <p>            &ldquo;Scalable + Language = Scala, the language that grows with demands of users.&rdquo;
+            </p>            <cite>- <a href="http://en.wikipedia.org/wiki/Scala_(programming_language)">Wikipedia</a>
+        </cite>
+        </blockquote>
+    </div>
+</section>
+
+<section>
+    <h2>A Few High Level Features</h2>
+
+    <ul>
+        <div class="fragment">
+            <li>Object and Functional Language</li>
+        </div>
+        <div class="fragment">
+            <li>Strongly Typed</li>
+        </div>
+        <div class="fragment">
+            <li>Built in Concurrency Patterns</li>
+        </div>
+        <div class="fragment">
+            <li>Pattern Matching</li>
+        </div>
+    </ul>
+    <aside class="notes">
+        <li>Type system is compile time checked</li>
+        <li>Encouraged to treat as a dynamic language to let/learn how compiler works</li>
+        <li>Immutability is encourages in variables and messages</li>
+        <li>Language is split up in Scala and Akka</li>
+        <li>Think regex in the class and method declarations and processing</li>
+    </aside>
+</section>
+
+<section>
+    <h2>Some Basics</h2>
+
+    <h3>Trait and Case Class</h3>
+
+    <div class="fragment">
+        <pre><code data-trim>
+trait Bike {
+    val brand: String
+    val radius: Double
+
+    def calculateCircumference(): Double = 2 * Pi * radius
+}
+
+case class Serrota(brand:String="Serrota", radius:Integer=311) extends Bike
+
+case class TrekMtnBike(brand:String="Trek", radius:Integer=292) extends Bike
+
+        </code></pre>
+    </div>
+</section>
+
+<section>
+    <h2>Some More Basics</h2>
+
+    <h3>Pattern Matching</h3>
+
+    <div class="fragment">
+        <pre><code data-trim>
+object MatchTest1 extends Application {
+    def matchTest(x: Int): String = x match {
+        case 1 => "one"
+        case 2 => "two"
+        case _ => "many"
+    }
+
+    println(matchTest(3))
+}
+        </code></pre>
+    </div>
+</section>
+
+<section>
+    <h2>Enough, let's see some code</h2>
+
+    <div class="fragment">
+        <h3>What will we be seeing...</h3>
+    </div>
+    <ul>
+        <div class="fragment">
+            <li>A simple Scala / <a target="_blank" href="http://localhost:8888/Object/123">Spray app</a></li>
+        </div>
+        <div class="fragment">
+            <li>gatling, a stress test tool</li>
+        </div>
+        <div class="fragment">
+            <li>Swagger, a rest documentation tool, <a target="_blank" href="http://petstore.swagger.wordnik.com/">http://petstore.swagger.wordnik.com/</a></li>
+        </div>
+    </ul>
+</section>
+
+<section>
+    <h2>Spray, Akka, Redis, and Gatling Oh My</h2>
+    <aside class="notes">
+        <li>Show Spray DSL</li>
+        <li>Show GetCachedObjectActor</li>
+        <li>Show MediaClient</li>
+        <li>Start up </li>
+        <li>Redis detour</li>
+        <li>Run gatling</li>
+        <li>Give gatling tour</li>
+        <li>Show gatling results</li>
+        <li>Show swagger UI</li>
+    </aside>
+</section>
+
+<section data-background="http://www.scala-lang.org/resources/img/smooth-spiral.png"
+         data-background-size="200px" >
+    <h2 style="vertical-align: top; position: absolute; top: 10px">Whoa...</h2>
+    <div class="fragment" style="position: absolute; top: 100px;">
+        <h2>where to now?</h2>
+    </div>
+</section>
+
+<section>
+    <h2>Scala has momentum...</h2>
+
+    <ul>
+        <div class="fragment">
+            <li>Twitter has used it since 2009</li>
+        </div>
+        <div class="fragment">
+            <li>LinkedIn switched to Play in 2011 for all new work</li>
+        </div>
+        <div class="fragment">
+            <li>StumbeUpon is Scala</li>
+        </div>
+        <div class="fragment">
+            <li>Verizon's X1 competitor OnCue and Ooyla</li>
+        </div>
+        <div class="fragment">
+            <li>Many more start-ups</li>
+        </div>
+    </ul>
+</section>
+
+<section>
+    <h2>Why...</h2>
+
+    <div style="display: inline-block; width: 90%; text-align: left; vertical-align: top">
+        <div class="fragment">
+            <li>Scala offers powerful features for abstraction that differ from Java</li>
+        </div>
+        <div class="fragment">
+            <li>Pooling and Phases are abstracted into Akka framework</li>
+        </div>
+        <div class="fragment">
+                <li style="text-align: left;">Runs on the JVM:
+                    <div style="margin-left: 40px; width: 90%">
+                        <ul>
+                            <div class="fragment">
+                                <li>Use existing Java modules</li>
+                            </div>
+                            <div class="fragment">
+                                <li>Maven and Spring</li>
+                            </div>
+                            <div class="fragment">
+                                <li>Use success of Java language</li>
+                            </div>
+                        </ul>
+                    </div>
+                </li>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Take aways...</h2>
+    <ul>
+        <div class="fragment">
+            <li>Concurrency built with Akka Framework and abstracted from application</li>
+        </div>
+        <div class="fragment">
+            <li>Actor Pattern is powerful with immutable messages</li>
+        </div>
+        <div class="fragment">
+            <li>Language speed is based on JVM and Java NIO</li>
+        </div>
+        <div class="fragment">
+            <li>Functional nature is well suited for concurrency problems</li>
+        </div>
+    </ul>
+</section>
+
+<section>
+    <h2>Resources and Questions</h2>
+    <ul>
+        <li>http://www.scala-lang.org/</li>
+        <li>http://gatling.io</li>
+        <li>http://akka.io/</li>
+        <li>http://danielwestheide.com/scala/neophytes.html</li>
+        <li>https://twitter.github.io/scala_school/basics.html</li>
+    </ul>
+</section>
+
+
+<section>
+    <h1>THE END</h1>
+
+    <h3>brandon lonac</h3>
+</section>
+
+
+<!--<section>-->
+    <!--<section data-background="#007777">-->
+        <!--<h2>Slide Backgrounds</h2>-->
+
+        <!--<p>-->
+            <!--Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color.-->
+            <!--All CSS color formats are supported.-->
+        <!--</p>-->
+        <!--<a href="#" class="image navigate-down">-->
+            <!--<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"-->
+                 <!--alt="Down arrow">-->
+        <!--</a>-->
+    <!--</section>-->
+    <!--<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">-->
+        <!--<h2>Image Backgrounds</h2>-->
+        <!--<pre><code>&lt;section data-background="image.png"&gt;</code></pre>-->
+    <!--</section>-->
+    <!--<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat"-->
+             <!--data-background-size="100px">-->
+        <!--<h2>Repeated Image Backgrounds</h2>-->
+        <!--<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png"-->
+            <!--data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>-->
+    <!--</section>-->
+<!--</section>-->
+
+<!--<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">-->
+    <!--<h2>Background Transitions</h2>-->
+
+    <!--<p>-->
+        <!--Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather-->
+        <!--than fade.-->
+    <!--</p>-->
+<!--</section>-->
+
+<!--<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">-->
+    <!--<h2>Background Transition Override</h2>-->
+
+    <!--<p>-->
+        <!--You can override background transitions per slide by using <code>data-background-transition="slide"</code>.-->
+    <!--</p>-->
+<!--</section>-->
+
+
+<!--<section>-->
+    <!--<h2>Export to PDF</h2>-->
+
+    <!--<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an-->
+        <!--example that's been uploaded to SlideShare.</p>-->
+    <!--<script>-->
+        <!--document.getElementById(-->
+                <!--'slideshare').attributeName = 'allowfullscreen';-->
+    <!--</script>-->
+<!--</section>-->
+
+<!--<section>-->
+    <!--<h2>Take a Moment</h2>-->
+
+    <!--<p>-->
+        <!--Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take-->
+        <!--distracting slides off the screen-->
+        <!--during a presentation.-->
+    <!--</p>-->
+<!--</section>-->
+
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize(
+            {
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function ()
+                    {
+                        return !document.body.classList;
+                    } },
+                    { src: 'plugin/markdown/marked.js', condition: function ()
+                    {
+                        return !!document.querySelector(
+                                '[data-markdown]');
+                    } },
+                    { src: 'plugin/markdown/markdown.js', condition: function ()
+                    {
+                        return !!document.querySelector(
+                                '[data-markdown]');
+                    } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function ()
+                    {
+                        hljs.initHighlightingOnLoad();
+                    } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function ()
+                    {
+                        return !!document.body.classList;
+                    } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function ()
+                    {
+                        return !!document.body.classList;
+                    } }
+                ]
+            });
+
+</script>
+
+</body>
+</html>
